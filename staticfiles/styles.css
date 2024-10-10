@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(90deg, #000011, #434343);
+}
+
+header {
+    background: linear-gradient(90deg, #333, #666); /* Gradient background */
+    color: white; /* Text color */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Space around the header */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    font-family: 'Poppins', sans-serif; /* Font choice */
+    border-bottom: 3px solid #FFD700; /* Gold border */
+}
+
+#container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Ensures instructions and container are spaced */
+    padding: 20px;
+}
+#instructions {
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 300px; /* Center the instruction section */
+    color: #f0f0f0; /* Light text color */
+    transition:  transform 0.3s;
+}
+#instructions:hover{
+    transform: scale(1.009);
+
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(20, 30px);
+    grid-gap: 1px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:  transform 0.3s;
+}
+#grid:hover{
+    transform: scale(1.009);
+
+}
+.controls {
+    display: flex;
+    gap: 10px;  /* Space between the buttons */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 20px;
+}
+button {
+    background: linear-gradient(90deg, #ffcc00, #ff9900); /* Gradient button background */
+    color: black; /* Text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for buttons */
+    font-size: 16px; /* Button font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth transition for effects */
+}
+
+/* Hover effect */
+button:hover {
+    background: linear-gradient(90deg, #ff9900, #ffcc00);/* Add shadow effect */
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cell.start {
+    background-color: #66ff66;
+}
+
+.cell.end {
+    background-color: #ff6666;
+}
+
+.cell.wall {
+    background-color: #000000;
+}
+.cell.path {
+    background-color: #ffff00; /* Path color */
+}
+
+
+
+footer {
+    background: linear-gradient(90deg, #333, #666); /* Gradient background */
+    color: white; /* Text color */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Space around the header */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    font-family: 'Poppins', sans-serif; /* Font choice */
+    border-top: 3px solid #FFD700; /* Gold border */
+}
+@media (max-width: 768px) {
+header, footer {
+        padding: 15px; /* Reduced padding for smaller screens */
+    }
+    #grid {
+        grid-template-columns: repeat(10, 20px); /* 10 columns for smaller screens */
+    }
+
+    .cell {
+        width: 20px; /* Smaller cell size */
+        height: 20px; /* Smaller cell size */
+    }
+
+    button {
+        padding: 8px 12px; /* Smaller button padding */
+    }
+}
+
+@media (max-width: 480px) {
+header, footer {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+    #grid {
+        grid-template-columns: repeat(5, 15px); /* 5 columns for very small screens */
+    }
+
+    .cell {
+        width: 15px; /* Even smaller cell size */
+        height: 15px; /* Even smaller cell size */
+    }
+
+    button {
+        padding: 6px 10px; /* Smaller button padding */
+    }
+}
+
+
