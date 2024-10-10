@@ -1,0 +1,37 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>A* Pathfinding Visualization</title>
+</head>
+<body>
+    <header>
+        <h3>The A-Star Journey: Find Your Way</h3>
+    </header>
+     <div class="flex-container">
+            <div id="instructions">
+                <h3>Instructions:</h3>
+                <p>1. Click on a cell to set the <strong>start</strong> and <strong>end</strong> points.</p>
+                <p>2. Click on cells to create <strong>walls</strong> that block the path.</p>
+                <p>3. Click the <strong>Start</strong> button to begin the A* algorithm.</p>
+                <p>4. Click the <strong>Reset</strong> button to clear the grid and start over.</p>
+            </div>
+
+    <div id="container">
+        <div class="controls">
+            <button id="start-btn" title="Start the A* algorithm">Start</button>
+            <button id="reset-btn" title="Reset the grid and start over">Reset</button>
+            <button id="randomize-btn" title="Generate random walls">Randomize Walls</button>
+        </div>
+        <div id="grid"></div>
+    </div>
+     </div>
+    <footer>
+        <p>&copy; 2024 Abhay Chaturvedi. All rights reserved.</p>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
