@@ -11,24 +11,33 @@
     <header>
         <h3>The A-Star Journey: Find Your Way</h3>
     </header>
-     <div class="flex-container">
-            <div id="instructions">
-                <h3>Instructions:</h3>
-                <p>1. Click on a cell to set the <strong>start</strong> and <strong>end</strong> points.</p>
-                <p>2. Click on cells to create <strong>walls</strong> that block the path.</p>
-                <p>3. Click the <strong>Start</strong> button to begin the A* algorithm.</p>
-                <p>4. Click the <strong>Reset</strong> button to clear the grid and start over.</p>
-            </div>
+     <!div class="flex-container">
+           <!-- Button to open the modal -->
+
+
+<!-- The Modal -->
+<div id="instructions-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Instructions:</h2>
+        <p>1. Click on a cell to set the <strong>start</strong> and <strong>end</strong> points.</p>
+        <p>2. Click on cells to create <strong>walls</strong> that block the path.</p>
+        <p>3. Click the <strong>Start</strong> button to begin the A* algorithm.</p>
+        <p>4. Click the <strong>Reset</strong> button to clear the grid and start over.</p>
+    </div>
+</div>
+
 
     <div id="container">
         <div class="controls">
+            <button id="open-instructions-btn">Show Instructions</button>
             <button id="start-btn" title="Start the A* algorithm">Start</button>
             <button id="reset-btn" title="Reset the grid and start over">Reset</button>
             <button id="randomize-btn" title="Generate random walls">Randomize Walls</button>
         </div>
         <div id="grid"></div>
     </div>
-     </div>
+     <!/div>
     <footer>
         <p>&copy; 2024 Abhay Chaturvedi. All rights reserved.</p>
     </footer>

@@ -1,25 +1,58 @@
 const gridElement = document.getElementById('grid');
 const startBtn = document.getElementById('start-btn');
 const resetBtn = document.getElementById('reset-btn');
-const modal = document.getElementById('modal');
+//const modal = document.getElementById('modal');
 let grid = [];
 let start = null;
 let end = null;
 
 // Create grid
 function createGrid() {
-    gridElement.innerHTML = '';
-    grid = Array.from({ length: 20 }, () => Array(20).fill(0)); // 0 for walkable
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
-    for (let i = 0; i < 20; i++) {
-        for (let j = 0; j < 20; j++) {
+    // Define the number of rows and columns based on the screen size
+    let rows, cols;
+    if (width < 400) {
+        rows = 12; // Smaller grid for mobile screens
+        cols = 12;
+    } else if (width < 800) {
+        rows = 15; // Medium grid for tablet screens
+        cols = 15;
+    } else {
+        rows = 20; // Default for larger screens
+        cols = 20;
+    }
+
+    gridElement.innerHTML = '';  // Clear existing grid
+    grid = Array.from({ length: rows }, () => Array(cols).fill(0)); // Create grid array
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');
             cell.addEventListener('click', () => selectCell(i, j, cell));
             gridElement.appendChild(cell);
         }
     }
+
+    // Optionally, adjust the size of the cells to fit the screen better
+    adjustCellSize(rows, cols);
 }
+
+function adjustCellSize(rows, cols) {
+    const cellSize = Math.min(
+        Math.floor(gridElement.offsetWidth / cols),
+        Math.floor(gridElement.offsetHeight / rows)
+    );
+
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        cell.style.width = `${cellSize}px`;
+        cell.style.height = `${cellSize}px`;
+    });
+}
+
 
 // Handle cell selection
 function selectCell(i, j, cell) {
@@ -83,9 +116,11 @@ function renderGrid() {
     }
 }
 async function animatePath(path) {
+    const gridWidth = grid[0].length;
     for (let i = 0; i < path.length; i++) {
         const [x, y] = path[i];
-        const cell = gridElement.children[x * 20 + y];
+        const cellIndex = x*gridWidth + y;
+        const cell = gridElement.children[cellIndex];
 
         // Add the path class to the cell
         cell.classList.add('path');
@@ -157,9 +192,31 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+const openInstructionsBtn = document.getElementById('open-instructions-btn');
+const instructionsModal = document.getElementById('instructions-modal');
+const closeButton = document.querySelector('.close-button');
+
+// Open the modal when the button is clicked
+openInstructionsBtn.addEventListener('click', () => {
+    instructionsModal.style.display = 'block';
+});
+
+// Close the modal when the close button is clicked
+closeButton.addEventListener('click', () => {
+    instructionsModal.style.display = 'none';
+});
+
+// Close the modal when clicking outside of the modal content
+window.addEventListener('click', (event) => {
+    if (event.target === instructionsModal) {
+        instructionsModal.style.display = 'none';
+    }
+});
+
 
 // Event listeners
 startBtn.addEventListener('click', startAlgorithm);
 resetBtn.addEventListener('click', resetGrid);
 document.getElementById('randomize-btn').addEventListener('click', randomizeWalls);
+window.addEventListener('resize', createGrid);
 createGrid();

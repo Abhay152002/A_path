@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: linear-gradient(90deg, #000011, #434343);
+    background: linear-gradient(135deg, #000011, #434343);
 }
 
 header {
@@ -15,7 +15,6 @@ header {
 }
 
 #container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +40,7 @@ header {
 
 #grid {
     display: grid;
-    grid-template-columns: repeat(20, 30px);
+    grid-template-columns: repeat(20,25px);
     grid-gap: 1px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -73,10 +72,44 @@ button {
 button:hover {
     background: linear-gradient(90deg, #ff9900, #ffcc00);/* Add shadow effect */
 }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+     border-radius:8px;/* Could be more or less, depending on screen size */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 .cell {
-    width: 30px;
-    height: 30px;
+    height:30px;
+    width:30px;
     border: 1px solid #ccc;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -89,16 +122,12 @@ button:hover {
 .cell.end {
     background-color: #ff6666;
 }
-
 .cell.wall {
     background-color: #000000;
 }
 .cell.path {
     background-color: #ffff00; /* Path color */
 }
-
-
-
 footer {
     background: linear-gradient(90deg, #333, #666); /* Gradient background */
     color: white; /* Text color */
@@ -108,40 +137,57 @@ footer {
     font-family: 'Poppins', sans-serif; /* Font choice */
     border-top: 3px solid #FFD700; /* Gold border */
 }
-@media (max-width: 768px) {
-header, footer {
-        padding: 15px; /* Reduced padding for smaller screens */
-    }
-    #grid {
-        grid-template-columns: repeat(10, 20px); /* 10 columns for smaller screens */
-    }
 
-    .cell {
-        width: 20px; /* Smaller cell size */
-        height: 20px; /* Smaller cell size */
-    }
-
+/* Responsive Design for Mobile */
+@media (max-width: 800px) {
     button {
-        padding: 8px 12px; /* Smaller button padding */
+        padding: 8px 8px; /* Smaller padding */
+        font-size: 10px; /* Smaller font size */
+        width: 80%; /* Make the button width responsive */
+        margin: 0 auto; /* Center the button */
+        display: block;
+    }
+    #grid{
+    grid-template-columns: repeat(15,25px)
+}
+    footer{
+    position:fixed;
+    bottom:0;
+    font-size:10px;
+    width:100%;
     }
 }
 
-@media (max-width: 480px) {
-header, footer {
-        padding: 10px; /* Reduced padding for smaller screens */
-    }
-    #grid {
-        grid-template-columns: repeat(5, 15px); /* 5 columns for very small screens */
-    }
-
-    .cell {
-        width: 15px; /* Even smaller cell size */
-        height: 15px; /* Even smaller cell size */
-    }
+/* Responsive for Very Small Screens */
+@media (max-width: 400px) {
+    header{
+    font-size:12px;}
 
     button {
-        padding: 6px 10px; /* Smaller button padding */
+        padding: 8px 8px; /* Smaller padding */
+        font-size: 10px; /* Smaller font size */
+        width: 80%; /* Make the button width responsive */
+        margin: 0 auto; /* Center the button */
+        display: block;
+    }
+    #grid{
+    grid-template-columns: repeat(12,18px)
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+     width: 50%;
+    font-size:12px;/* Could be more or less, depending on screen size */
+}
+    footer{
+    position:fixed;
+    bottom:0;
+    font-size:10px;
+    width:100%;
     }
 }
+
 
 
