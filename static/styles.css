@@ -151,8 +151,6 @@ footer {
     grid-template-columns: repeat(15,25px)
 }
     footer{
-    position:fixed;
-    bottom:0;
     font-size:10px;
     width:100%;
     }
@@ -182,8 +180,7 @@ footer {
     font-size:12px;/* Could be more or less, depending on screen size */
 }
     footer{
-    position:fixed;
-    bottom:0;
+
     font-size:10px;
     width:100%;
     }
